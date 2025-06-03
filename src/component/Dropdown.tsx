@@ -6,11 +6,9 @@ import Repos from "./Repos";
 export default function Dropdown({
   avatar_url,
   username,
-  onSelectUser,
 }: {
   avatar_url: string;
   username: string;
-  onSelectUser: (selectedUser: string) => void;
 }) {
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
@@ -33,7 +31,7 @@ export default function Dropdown({
     <div className="" ref={dropdownRef}>
       <button
         onClick={() => {
-          setIsOpen(!isOpen), onSelectUser(isOpen ? username : "");
+          setIsOpen(!isOpen);
         }}
         className="inline-flex justify-between items-center w-48 px-4 py-2 bg-indigo-600 text-white font-semibold rounded-md shadow-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 !w-full"
         aria-haspopup="true"

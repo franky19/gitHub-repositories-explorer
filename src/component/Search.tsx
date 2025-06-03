@@ -8,11 +8,7 @@ interface GitHubUser {
   avatar_url: string;
 }
 
-interface Props {
-  onSelectUser: (username: string) => void;
-}
-
-const Search: React.FC<Props> = ({ onSelectUser }) => {
+const Search = () => {
   const [query, setQuery] = useState("");
   const [users, setUsers] = useState<GitHubUser[]>([]);
   const [loading, setLoading] = useState(false);
@@ -62,7 +58,6 @@ const Search: React.FC<Props> = ({ onSelectUser }) => {
             key={user.login}
             avatar_url={user?.avatar_url}
             username={user?.login}
-            onSelectUser={onSelectUser}
           />
         ))}
       </div>
