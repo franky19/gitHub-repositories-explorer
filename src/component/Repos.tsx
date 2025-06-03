@@ -6,13 +6,11 @@ type Repo = {
   name: string;
   description: string;
   stargazers_count: number;
+  html_url: string;
   // add other fields you need
 };
-// const token = process.env.REACT_APP_GITHUB_TOKEN;
 const token = import.meta.env.VITE_GITHUB_TOKEN;
 const MyComponent = ({ username }: { username: string }) => {
-  console.log("token:", token);
-//   const [repos, setRepos] = useState<Repo[]>([]);
   const [detailRepos, setDetailRepos] = useState<Repo[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
@@ -67,6 +65,7 @@ const MyComponent = ({ username }: { username: string }) => {
   if (loading) return <div>Loading...</div>;
   if (error) return <div>Error: {error}</div>;
 
+
   return (
     <div className="p-4">
       <h2 className="text-2xl font-bold mb-4 text-gray-800">Repos List</h2>
@@ -74,7 +73,12 @@ const MyComponent = ({ username }: { username: string }) => {
         {detailRepos.map((repo) => (
           <li
             key={repo.name}
-            className="bg-white p-4 rounded-xl shadow hover:shadow-md border border-gray-200 transition-all duration-300">
+            className="bg-white p-4 rounded-xl shadow hover:shadow-md border border-gray-200 transition-all duration-300 hover:cursor-pointer"
+            onClick={() => {
+              if (repo?.html_url) {
+                window.location.href = repo.html_url;
+              }
+            }}>
             <h3 className="text-lg font-semibold text-blue-600">{repo.name}</h3>
             <p className="text-sm text-gray-600">{repo.description}</p>
             <div className="mt-2 text-sm text-yellow-600 font-medium flex items-center gap-1">

@@ -33,7 +33,7 @@ export default function Dropdown({
     <div className="" ref={dropdownRef}>
       <button
         onClick={() => {
-          setIsOpen(!isOpen), onSelectUser(username);
+          setIsOpen(!isOpen), onSelectUser(isOpen ? username : "");
         }}
         className="inline-flex justify-between items-center w-48 px-4 py-2 bg-indigo-600 text-white font-semibold rounded-md shadow-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 !w-full"
         aria-haspopup="true"
