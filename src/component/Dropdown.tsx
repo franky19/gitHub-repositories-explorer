@@ -6,9 +6,11 @@ import Repos from "./Repos";
 export default function Dropdown({
   avatar_url,
   username,
+  onSelectUser,
 }: {
   avatar_url: string;
   username: string;
+  onSelectUser: (selectedUser: string) => void;
 }) {
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
@@ -30,7 +32,9 @@ export default function Dropdown({
   return (
     <div className="" ref={dropdownRef}>
       <button
-        onClick={() => setIsOpen(!isOpen)}
+        onClick={() => {
+          setIsOpen(!isOpen), onSelectUser(username);
+        }}
         className="inline-flex justify-between items-center w-48 px-4 py-2 bg-indigo-600 text-white font-semibold rounded-md shadow-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 !w-full"
         aria-haspopup="true"
         aria-expanded={isOpen}
@@ -64,22 +68,6 @@ export default function Dropdown({
       {isOpen && (
         <div className=" mt-2 w-48 bg-white rounded-md shadow-lg ring-1 ring-black ring-opacity-5 z-10 w-full right-0">
           <Repos username={username} />
-          {/* <ul className="py-1 w-full">
-            {["Option 1", "Option 2", "Option 3"].map((option) => (
-              <li key={option}>
-                <a
-                  href="#"
-                  className="block px-4 py-2 text-gray-700 hover:bg-indigo-600 hover:text-white cursor-pointer w-full"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    setIsOpen(false);
-                    // You can add option-specific logic here if needed
-                  }}>
-                  {option}
-                </a>
-              </li>
-            ))}
-          </ul> */}
         </div>
       )}
     </div>

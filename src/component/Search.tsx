@@ -62,19 +62,10 @@ const Search: React.FC<Props> = ({ onSelectUser }) => {
             key={user.login}
             avatar_url={user?.avatar_url}
             username={user?.login}
+            onSelectUser={onSelectUser}
           />
         ))}
-        {/* <Dropdown/> */}
       </div>
-      {/* <ul className="space-y-2">
-        {users.map((user) => (
-          <li key={user.login} className="flex items-center space-x-2 cursor-pointer hover:bg-gray-100 p-2 rounded"
-              onClick={() => onSelectUser(user.login)}>
-            <img src={user.avatar_url} alt={user.login} className="w-8 h-8 rounded-full" />
-            <span>{user.login}</span>
-          </li>
-        ))}
-      </ul> */}
     </div>
   );
 };

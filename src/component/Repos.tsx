@@ -12,7 +12,7 @@ type Repo = {
 const token = import.meta.env.VITE_GITHUB_TOKEN;
 const MyComponent = ({ username }: { username: string }) => {
   console.log("token:", token);
-  const [repos, setRepos] = useState<Repo[]>([]);
+//   const [repos, setRepos] = useState<Repo[]>([]);
   const [detailRepos, setDetailRepos] = useState<Repo[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
@@ -33,8 +33,6 @@ const MyComponent = ({ username }: { username: string }) => {
         );
         if (!res.ok) throw new Error("Failed to fetch repos list");
         const reposList = await res.json();
-
-        setRepos(reposList);
 
         // 2. Fetch details for each repo in parallel
         const detailedRepos = await Promise.all(
