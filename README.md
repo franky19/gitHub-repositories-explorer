@@ -8,7 +8,6 @@ A web application to explore GitHub repositories easily. Search for users or org
 - View list of public repositories with details
 - Repository info: name, description, stars, forks, language, last updated
 - Responsive and clean UI
-- Deployed and hosted on Vercel
 
 ## Demo
 
@@ -31,19 +30,22 @@ Check the live demo here: [https://your-vercel-app-url.vercel.app](https://your-
    cd github-repos-explorer
 
 2. Install dependencies:
+   ```bash
     npm install
     # or
     yarn install
 
-3. Create a .env.local file to store environment variables (optional):
-  VITE_GITHUB_TOKEN= your_personal_access_token
+4. Create a .env.local file to store environment variables (optional):
+   ```bash
+   VITE_GITHUB_TOKEN= your_personal_access_token
 
-4. Running Locally
+6. Running Locally
+    ```bash
     npm run dev
     # or
     yarn dev
 
-Technologies Used
+### Technologies Used
 1. React.js using Vite.js
 2. GitHub REST API
 3. Tailwind CSS (or your chosen CSS framework)
